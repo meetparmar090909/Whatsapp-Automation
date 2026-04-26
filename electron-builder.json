@@ -1,0 +1,58 @@
+{
+  "appId": "com.whatsapp-automation.dashboard",
+  "productName": "WHATSAPP AUTOMATION V2.0",
+  "directories": {
+    "output": "SETUP_EXE"
+  },
+  "asar": true,
+  "asarUnpack": [
+    "node_modules/node-adodb/**/*",
+    "node_modules/whatsapp-web.js/**/*",
+    "node_modules/puppeteer/**/*",
+    "node_modules/puppeteer-core/**/*"
+  ],
+  "files": [
+    "**/*",
+    "!dist/**/*",
+    "!EXES/**/*",
+    "!New Exe/**/*",
+    "!AGENT EXE/**/*",
+    "!final automation/**/*",
+    "!whatsapp auto/**/*",
+    "!whatsapp_web_auto/**/*",
+    "!final/**/*",
+    "!SETUP_EXE/**/*",
+    "!build_new/**/*",
+    "!.qoder/**/*",
+    "!.wwebjs_auth/**/*",
+    "!.wwebjs_cache/**/*",
+    "!*.log",
+    "!*.tmp",
+    "!*.bak",
+    "!node_modules/puppeteer/.local-chromium/**/*"
+  ],
+  "extraResources": [
+    {
+      "from": "COPIM.accdb",
+      "to": "COPIM.accdb"
+    }
+  ],
+  "win": {
+    "target": [
+      "portable"
+    ],
+    "requestedExecutionLevel": "asInvoker"
+  },
+  "nsis": {
+    "artifactName": "WHATSAPP AUTOMATION V2.0 Setup.exe",
+    "oneClick": true,
+    "perMachine": false,
+    "allowToChangeInstallationDirectory": false,
+    "createDesktopShortcut": true,
+    "createStartMenuShortcut": true
+  },
+  "portable": {
+    "artifactName": "WHATSAPP AUTOMATION V2.0.exe",
+    "requestExecutionLevel": "user"
+  }
+}

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About PAINKILLER - Infosoft</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="about.css">
+</head>
+
+<body>
+
+
+    <main>
+        <div class="info-card">
+            <h1 class="title">PAINKILLER</h1>
+            <p class="subtitle">Developed by Infosoft</p>
+
+            <div class="address-info" id="typing-container">
+                <p><span id="line1" class="typing-line"></span></p>
+                <p><span id="line2" class="typing-line"></span></p>
+                <p><span id="line3" class="typing-line"></span></p>
+                <p><span id="line4" class="typing-line"></span></p>
+                <span id="global-cursor" class="cursor"></span>
+            </div>
+
+            <button class="btn-ok" onclick="window.location.href='index.html'">Ok</button>
+        </div>
+    </main>
+
+    <script>
+        const lines = [
+            { id: 'line1', text: 'C 22 Harkashi Society, Harni Road' },
+            { id: 'line2', text: 'Vadodara - 390022' },
+            { id: 'line3', text: 'Ph. 2490435' },
+            { id: 'line4', text: 'E-Mail: contact@infosoft.co.in' }
+        ];
+
+        const cursor = document.getElementById('global-cursor');
+
+        async function typeText(elementId, text, speed = 40) {
+            const element = document.getElementById(elementId);
+            element.classList.add('active');
+
+            // Move cursor to this line's parent p
+            element.parentElement.appendChild(cursor);
+
+            for (let i = 0; i <= text.length; i++) {
+                element.textContent = text.slice(0, i);
+                await new Promise(resolve => setTimeout(resolve, speed));
+            }
+        }
+
+        async function startTyping() {
+            // Initial delay
+            await new Promise(resolve => setTimeout(resolve, 800));
+
+            for (const line of lines) {
+                await typeText(line.id, line.text);
+                await new Promise(resolve => setTimeout(resolve, 300)); // Delay between lines
+            }
+        }
+
+        window.onload = startTyping;
+    </script>
+</body>
+
+</html>
